@@ -1,0 +1,33 @@
+ul {
+  min-height: 100vmax;
+  height: 100%;
+  min-width: 165px;
+}
+a {
+  color: white;
+}
+
+li:hover a:not(.active) {
+  color: black;
+  background-color: lightgrey;
+}
+
+.active {
+  background-color: grey;
+  width: calc(100% + 5px);
+}
+/* Small devices (landscape phones, less than 840px)*/
+@media (max-width: 840px) {
+  ul {
+    min-width: 0;
+    span {
+      display: none;
+    }
+  }
+  ul:hover {
+    min-width: 165px;
+    span {
+      display: initial;
+    }
+  }
+}
