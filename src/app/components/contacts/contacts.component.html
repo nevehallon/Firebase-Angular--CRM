@@ -24,8 +24,8 @@
                         <td>{{item.birthday | date: "dd/mm/yyyy"}}</td>
                         <td>
                             <ul *ngIf="item.phones && item.phones.length; else noPhones">
-                                <li *ngFor="let phone of item.phones;">
-                                    {{phone}}
+                                <li *ngFor="let phone of item.phones; last as l">
+                                    {{l ? phone : phone +", "}}
                                 </li>
                             </ul>
                         </td>
