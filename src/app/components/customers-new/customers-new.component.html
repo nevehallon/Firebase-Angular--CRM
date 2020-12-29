@@ -1,0 +1,85 @@
+<app-page-header title="add customer" description="add a new customer" icon="fas fa-user-plus"></app-page-header>
+
+<div class="row">
+    <div class="col-12">
+        <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate="novalidate" autocomplete="off">
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-3">
+                    <label for="firstName">
+                        <span class="text-danger">*</span> First Name
+                    </label>
+                    <input type="text" #fnf="ngModel" [(ngModel)]="form.firstName" required minlength="2" name="firstName" id="firstName" class="form-control" [ngClass]="{
+                        'is-valid': fnf.valid && fnf.touched,
+                        'is-invalid': fnf.invalid && fnf.touched
+                        }" />
+
+                    <div *ngIf="fnf.errors?.required" class="invalid-feedback">
+                        First name is required
+                    </div>
+                    <div *ngIf="fnf.errors?.minlength" class="invalid-feedback">
+                        First name must be at least {{fnf.errors.minlength.requiredLength}} long
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="lastName">
+                        <span class="text-danger">*</span> Last Name
+                    </label>
+                    <input type="text" #lnf="ngModel" [(ngModel)]="form.lastName" required minlength="2" name="lastName" id="lastName" class="form-control" [ngClass]="{
+                        'is-valid': lnf.valid && lnf.touched,
+                        'is-invalid': lnf.invalid && lnf.touched
+                        }" />
+
+                    <div *ngIf="lnf.errors?.required" class="invalid-feedback">
+                        Last name is required
+                    </div>
+                    <div *ngIf="lnf.errors?.minlength" class="invalid-feedback">
+                        Last name must be at least {{lnf.errors.minlength.requiredLength}} long
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-3">
+                    <label for="email"> <span class="text-danger">*</span> Email </label>
+                    <input type="email" #ef="ngModel" [(ngModel)]="form.email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" name="email" id="email" class="form-control" [ngClass]="{
+                        'is-valid': ef.valid && ef.touched,
+                        'is-invalid': ef.invalid && ef.touched
+                        }" />
+                    <div *ngIf="ef.errors?.required" class="invalid-feedback">
+                        Email is required
+                    </div>
+                    <div *ngIf="ef.errors?.pattern" class="invalid-feedback">
+                        '{{ef.errors.pattern.actualValue}}' is not a valid email
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="phone"> <span class="text-danger">*</span> Phone </label>
+                    <input type="tel" #pf="ngModel" [(ngModel)]="form.phone" required pattern="^0[2-9]\d{7,8}$" name="phone" id="phone" class="form-control" [ngClass]="{
+                        'is-valid': pf.valid && pf.touched,
+                        'is-invalid': pf.invalid && pf.touched
+                        }" />
+
+                    <div *ngIf="pf.errors?.required" class="invalid-feedback">
+                        Phone number is required
+                    </div>
+                    <div *ngIf="pf.errors?.pattern" class="invalid-feedback">
+                        '{{pf.errors.pattern.actualValue}}' is not a valid phone number
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-10 mb-3">
+                    <label for="customerAddress">Address</label>
+                    <textarea id="customerAddress" #af="ngModel" [(ngModel)]="form.address" name="address" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-10 mb-3">
+                    <label for="customerNotes">Notes</label>
+                    <textarea id="customerNotes" #nf="ngModel" [(ngModel)]="form.notes" name="notes" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
