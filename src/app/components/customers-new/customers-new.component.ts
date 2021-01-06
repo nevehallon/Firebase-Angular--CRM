@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Customer } from 'src/app/interfaces/customer';
+import { CustomersService } from 'src/app/services/customers.service';
 
 @Component({
   selector: 'app-customers-new',
@@ -15,10 +18,28 @@ export class CustomersNewComponent implements OnInit {
     address: '',
     notes: '',
   };
-  onSubmit() {
-    console.log('Submit');
+
+  resetForm(customerForm: NgForm) {
+    customerForm.resetForm({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      notes: '',
+    });
   }
-  constructor() {}
+
+  async onSubmit({ valid, value }: NgForm) {
+    if (valid) {
+      await this.customersService.add(value);
+      this.router.navigate(['/customers']);
+    }
+  }
+  constructor(
+    private router: Router,
+    private customersService: CustomersService
+  ) {}
 
   ngOnInit(): void {}
 }

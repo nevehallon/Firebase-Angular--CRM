@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-12">
-        <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate="novalidate" autocomplete="off">
+        <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)" novalidate="novalidate" autocomplete="off">
             <div class="row justify-content-center">
                 <div class="col-md-5 mb-3">
                     <label for="firstName">
@@ -74,12 +74,19 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 <div class="col-md-10 mb-3">
                     <label for="customerNotes">Notes</label>
                     <textarea id="customerNotes" #nf="ngModel" [(ngModel)]="form.notes" name="notes" class="form-control" rows="5"></textarea>
                 </div>
             </div>
+
+            <div class="fixed-bottom bg-light p-2 text-center">
+                <a routerLink="/customers" class="btn btn-secondary">Cancel</a>
+                <input type="button" (click)="resetForm(customerForm)" value="Reset" class="btn btn-secondary ml-3" />
+                <input type="submit" [disabled]="customerForm.form.invalid" value="Save" class="btn btn-primary ml-3" />
+            </div>
+
         </form>
     </div>
 </div>

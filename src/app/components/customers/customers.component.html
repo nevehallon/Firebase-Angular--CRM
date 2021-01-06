@@ -10,3 +10,52 @@
         </span>
     </div>
 </div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div *ngIf="customers$ | async as customers; else loading">
+            <table *ngIf="customers.length; else noCustomers" class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>#No.</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customers; index as i">
+                        <td>
+                            {{i + 1}}
+                            <hr class="m-0">
+                            <a title="Edit customer details" [routerLink]="['/customers', customer.id, 'edit']" class="m-3">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            <a title="Delete customer" (click)="remove(customer.id)" class="m-3">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+
+                        </td>
+                        <td>
+                            <a title="Go to customer's info" [routerLink]="['/customers', customer.id]">
+                                {{customer.firstName | titlecase}}
+                            </a>
+                        </td>
+                        <td>
+                            <a title="Go to customer's details" [routerLink]="['/customers', customer.id]">{{customer.lastName | titlecase}}</a>
+                        </td>
+                        <td> <a title="Start email" [href]="'mailto:' +  customer.email">{{customer.email | lowercase}}</a></td>
+                        <td> <a title="Dial phone" [href]="'tel:' +  customer.phone"> {{customer.phone}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ng-template #noCustomers>
+                <p><i>No customers...</i></p>
+            </ng-template>
+        </div>
+
+        <ng-template #loading> loading... </ng-template>
+    </div>
+</div>
