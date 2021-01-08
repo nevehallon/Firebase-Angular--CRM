@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-angular-crm": {
+      "hosting": {
+        "royalcrm": [
+          "fir-angular-crm"
+        ]
+      }
+    }
+  }
+}
