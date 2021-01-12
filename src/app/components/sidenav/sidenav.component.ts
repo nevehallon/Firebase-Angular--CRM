@@ -11,32 +11,32 @@ export class SidenavComponent implements OnInit {
     {
       title: 'customers',
       icon: 'fas fa-users',
-      link: '/customers',
+      link: 'customers',
     },
     {
       title: 'contacts',
       icon: 'fas fa-address-book',
-      link: '/contacts',
+      link: 'contacts',
     },
     {
       title: 'leads',
       icon: 'fas fa-hand-point-up',
-      link: '/leads',
+      link: 'leads',
     },
     {
       title: 'reports',
       icon: 'fas fa-flag',
-      link: '/reports',
+      link: 'reports',
     },
     {
       title: 'integrations',
       icon: 'fab fa-stack-exchange',
-      link: '/integrations',
+      link: 'integrations',
     },
     {
       title: 'year-end sale',
       icon: 'fas fa-glass-cheers',
-      link: '/sale',
+      link: 'sale',
     },
   ];
 

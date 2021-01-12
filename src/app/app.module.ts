@@ -21,6 +21,11 @@ import { CustomersDetailsComponent } from './components/customers-details/custom
 
 import { environment } from 'src/environments/environment';
 import { CustomersEditComponent } from './components/customers-edit/customers-edit.component';
+import { FilterArrayOfObjectsPipe } from './pipes/filter-array-of-objects.pipe';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { LoginGoogleDirective } from './directives/login-google.directive';
+import { LogoutDirective } from './directives/logout.directive';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,11 @@ import { CustomersEditComponent } from './components/customers-edit/customers-ed
     CustomersNewComponent,
     CustomersDetailsComponent,
     CustomersEditComponent,
+    FilterArrayOfObjectsPipe,
+    AuthFormComponent,
+    LoginGoogleDirective,
+    LogoutDirective,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,7 @@ export class CustomersNewComponent implements OnInit {
   async onSubmit({ valid, value }: NgForm) {
     if (valid) {
       await this.customersService.add(value);
-      this.router.navigate(['/customers']);
+      this.router.navigate(['/dashboard/customers']);
     }
   }
   constructor(

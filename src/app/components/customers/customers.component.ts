@@ -9,6 +9,8 @@ import { CustomersService } from 'src/app/services/customers.service';
   styleUrls: ['./customers.component.scss'],
 })
 export class CustomersComponent implements OnInit {
+  term: string = '';
+
   customers$: Observable<Customer[]>;
 
   constructor(private customersService: CustomersService) {
